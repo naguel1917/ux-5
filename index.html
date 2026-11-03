@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cubrí Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <!-- Basecoat UI (estilos de componentes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@1.1.0/dist/basecoat.cdn.min.css">
+  <!-- Tailwind v4 en el navegador (utilidades) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+    <a href="./" class="text-lg font-extrabold text-indigo-800">Cubrí Seguros</a>
+    <ol id="stepper" class="flex max-w-md flex-1 items-center gap-2" aria-label="Progreso" hidden></ol>
+  </div>
+</header>
+<main class="mx-auto max-w-6xl px-4 py-8">
+
+  <!-- 0 · Inicio / Catálogo -->
+  <section data-paso="0" class="grid items-center gap-8 lg:grid-cols-2">
+    <div class="space-y-4">
+      <h1 class="text-4xl lg:text-5xl">Contratá tu seguro en minutos</h1>
+      <p class="max-w-md text-[15px] text-slate-500">Cotizá, elegí un plan y recibí tu póliza al instante. Todo online, sin papeles.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-4"><article class="card gap-3 p-4 "><h3 class="text-lg font-bold">Celular</h3><p class="text-sm text-slate-500">Cubrí robo y rotura de pantalla</p>
+  <button type="button" class="btn" data-ir="1">Cotizar</button></article><article class="card gap-3 p-4 opacity-60"><h3 class="text-lg font-bold">Hogar</h3><p class="text-sm text-slate-500">Protegé tu casa</p>
+  <span class="badge" data-variant="secondary">Próximamente</span></article><article class="card gap-3 p-4 opacity-60"><h3 class="text-lg font-bold">Bicicleta</h3><p class="text-sm text-slate-500">Para tus recorridos</p>
+  <span class="badge" data-variant="secondary">Próximamente</span></article><article class="card gap-3 p-4 opacity-60"><h3 class="text-lg font-bold">Viaje</h3><p class="text-sm text-slate-500">Asistencia en el exterior</p>
+  <span class="badge" data-variant="secondary">Próximamente</span></article></div>
+  </section>
+
+  <div id="checkout" class="grid gap-8 pb-32 lg:pb-0 lg:data-[resumen]:grid-cols-[1fr_380px]" hidden>
+    <div>
+      <!-- 1 · Cotizar -->
+      <form data-paso="1" class="card" novalidate hidden>
+        <header><h2 class="text-2xl">Cotizá tu seguro de celular</h2><p class="text-[15px] text-slate-500">Contanos sobre tu equipo.</p></header>
+        <section class="grid gap-4 sm:grid-cols-2">
+          <div role="group" class="field" data-field="equipo.marca">
+  <label for="equipo-marca">Marca</label>
+  <select id="equipo-marca" data-campo="equipo.marca" aria-describedby="equipo-marca-error">
+    <option value="">Elegí una marca</option><option>Samsung</option><option>Apple</option><option>Motorola</option><option>Xiaomi</option><option>Otra</option>
+  </select>
+  <p id="equipo-marca-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="equipo.modelo">
+  <label for="equipo-modelo">Modelo</label>
+  <input id="equipo-modelo" type="text" data-campo="equipo.modelo" aria-describedby="equipo-modelo-error" autocomplete="off" placeholder="Galaxy A55">
+  <p id="equipo-modelo-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field sm:col-span-2" data-field="equipo.valor">
+  <label for="equipo-valor">Valor del equipo (ARS)</label>
+  <input id="equipo-valor" type="text" data-campo="equipo.valor" aria-describedby="equipo-valor-error" inputmode="numeric" autocomplete="off" placeholder="600000">
+  <p id="equipo-valor-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field sm:col-span-2" data-field="equipo.antiguedad" aria-labelledby="equipo-antiguedad-l">
+  <label id="equipo-antiguedad-l">Antigüedad del equipo</label>
+  <div class="flex flex-wrap gap-2"><label class="cursor-pointer rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:checked]:text-indigo-800 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-600"><input class="sr-only" type="radio" name="equipo-antiguedad" value="menos1" data-campo="equipo.antiguedad">Menos de 1 año</label><label class="cursor-pointer rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:checked]:text-indigo-800 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-600"><input class="sr-only" type="radio" name="equipo-antiguedad" value="1a2" data-campo="equipo.antiguedad">1 a 2 años</label><label class="cursor-pointer rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:checked]:text-indigo-800 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-indigo-600"><input class="sr-only" type="radio" name="equipo-antiguedad" value="mas2" data-campo="equipo.antiguedad">Más de 2 años</label></div>
+  <p id="equipo-antiguedad-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+        </section>
+        <div id="aviso-planes" class="alert mt-4" data-variant="destructive" hidden><h2>No pudimos cargar los planes</h2><section>Si abriste el archivo con doble click, usá Live Server o <code>npx serve</code>.</section></div>
+        <footer class="block"><p data-falta="1" class="mt-4 text-sm text-slate-500" aria-live="polite"></p>
+<div class="mt-4 flex flex-col-reverse gap-3 lg:flex-row lg:justify-between">
+  <button type="button" class="btn" data-variant="outline" data-ir="0">Volver</button>
+  <button type="submit" class="btn" disabled>Ver planes</button>
+</div></footer>
+      </form>
+
+      <!-- 2 · Elegir plan -->
+      <section data-paso="2" hidden>
+        <header><h2 class="text-2xl">Elegí tu plan</h2><p class="text-[15px] text-slate-500">Podés cambiarlo hasta el último paso.</p></header>
+        <div id="planes" class="mt-4 grid gap-4 lg:grid-cols-3"></div>
+        <div class="mt-4 flex flex-col-reverse gap-3 lg:flex-row lg:justify-between">
+          <button type="button" class="btn" data-variant="outline" data-ir="1">Volver</button>
+          <button type="button" class="btn" data-ir="3">Continuar</button>
+        </div>
+      </section>
+
+      <!-- 3 · Datos personales -->
+      <form data-paso="3" class="card" novalidate hidden>
+        <header><h2 class="text-2xl">Tus datos</h2><p class="text-[15px] text-slate-500">Los usamos para emitir la póliza.</p></header>
+        <section class="grid gap-4 sm:grid-cols-2">
+          <div role="group" class="field " data-field="titular.nombre">
+  <label for="titular-nombre">Nombre</label>
+  <input id="titular-nombre" type="text" data-campo="titular.nombre" aria-describedby="titular-nombre-error" autocomplete="given-name">
+  <p id="titular-nombre-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="titular.apellido">
+  <label for="titular-apellido">Apellido</label>
+  <input id="titular-apellido" type="text" data-campo="titular.apellido" aria-describedby="titular-apellido-error" autocomplete="family-name">
+  <p id="titular-apellido-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="titular.dni">
+  <label for="titular-dni">DNI</label>
+  <input id="titular-dni" type="text" data-campo="titular.dni" aria-describedby="titular-dni-error" inputmode="numeric" maxlength="8" placeholder="12345678">
+  <p id="titular-dni-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="titular.nacimiento">
+  <label for="titular-nacimiento">Fecha de nacimiento</label>
+  <input id="titular-nacimiento" type="date" data-campo="titular.nacimiento" aria-describedby="titular-nacimiento-error" autocomplete="bday">
+  <p id="titular-nacimiento-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="titular.email">
+  <label for="titular-email">Email</label>
+  <input id="titular-email" type="email" data-campo="titular.email" aria-describedby="titular-email-error" autocomplete="email" placeholder="juan.perez@mail.com">
+  <p id="titular-email-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="titular.celular">
+  <label for="titular-celular">Celular</label>
+  <input id="titular-celular" type="tel" data-campo="titular.celular" aria-describedby="titular-celular-error" autocomplete="tel" placeholder="11 5555-1234">
+  <p id="titular-celular-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field sm:col-span-2" data-field="titular.terminos">
+  <label class="flex items-center gap-2"><input type="checkbox" data-campo="titular.terminos" aria-describedby="titular-terminos-error"> Acepto los términos y condiciones</label>
+  <p id="titular-terminos-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+        </section>
+        <footer class="block"><p data-falta="3" class="mt-4 text-sm text-slate-500" aria-live="polite"></p>
+<div class="mt-4 flex flex-col-reverse gap-3 lg:flex-row lg:justify-between">
+  <button type="button" class="btn" data-variant="outline" data-ir="2">Volver</button>
+  <button type="submit" class="btn" disabled>Continuar al pago</button>
+</div></footer>
+      </form>
+
+      <!-- 4 · Pago -->
+      <form data-paso="4" class="card" novalidate hidden>
+        <header><h2 class="text-2xl">Pagá tu seguro</h2><p class="text-[15px] text-slate-500">Revisá el resumen y completá los datos de la tarjeta.</p></header>
+        <section class="grid gap-4 sm:grid-cols-2">
+          <div class="alert sm:col-span-2"><h2>Pago simulado</h2><section>Usá 4111 1111 1111 1111 (aprobada) o 4000 0000 0000 0002 (rechazada). No uses tarjetas reales.</section></div>
+          <div role="group" class="field sm:col-span-2"><label for="pago-metodo">Medio de pago</label>
+            <select id="pago-metodo" data-campo="pago.metodo"><option value="credito">Tarjeta de crédito</option><option value="debito">Tarjeta de débito</option></select></div>
+          <div role="group" class="field sm:col-span-2" data-field="pago.tarjeta">
+  <label for="pago-tarjeta">Número de tarjeta</label>
+  <input id="pago-tarjeta" type="text" data-campo="pago.tarjeta" aria-describedby="pago-tarjeta-error" inputmode="numeric" autocomplete="off" placeholder="4111 1111 1111 1111">
+  <p id="pago-tarjeta-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="pago.vencimiento">
+  <label for="pago-vencimiento">Vencimiento</label>
+  <input id="pago-vencimiento" type="text" data-campo="pago.vencimiento" aria-describedby="pago-vencimiento-error" inputmode="numeric" autocomplete="off" placeholder="MM/AA">
+  <p id="pago-vencimiento-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field " data-field="pago.cvv">
+  <label for="pago-cvv">CVV</label>
+  <input id="pago-cvv" type="text" data-campo="pago.cvv" aria-describedby="pago-cvv-error" inputmode="numeric" maxlength="3" autocomplete="off" placeholder="123">
+  <p id="pago-cvv-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+          <div role="group" class="field sm:col-span-2" data-field="pago.titular">
+  <label for="pago-titular">Titular de la tarjeta</label>
+  <input id="pago-titular" type="text" data-campo="pago.titular" aria-describedby="pago-titular-error" autocomplete="off">
+  <p id="pago-titular-error" data-error role="alert" class="text-red-600" hidden></p>
+</div>
+        </section>
+        <footer class="block"><p data-falta="4" class="mt-4 text-sm text-slate-500" aria-live="polite"></p>
+<div class="mt-4 flex flex-col-reverse gap-3 lg:flex-row lg:justify-between">
+  <button type="button" class="btn" data-variant="outline" data-ir="3">Volver</button>
+  <button type="submit" class="btn" disabled>Pagar y contratar</button>
+</div></footer>
+      </form>
+    </div>
+
+    <!-- Resumen: se genera una sola vez desde el estado -->
+    <aside id="resumen" class="card fixed inset-x-0 bottom-0 z-10 gap-2 rounded-none p-4 lg:sticky lg:bottom-auto lg:top-6 lg:self-start lg:rounded-xl" aria-label="Resumen" hidden>
+      <h2 class="hidden text-lg lg:block">Resumen de tu seguro</h2>
+      <dl id="resumen-detalle" class="hidden gap-2 lg:grid"></dl>
+      <div class="flex items-baseline justify-between border-t border-slate-200 pt-2">
+        <span class="text-sm text-slate-500">Plan <b id="resumen-plan" class="text-slate-900"></b></span>
+        <span class="text-lg font-extrabold text-indigo-800"><span id="resumen-total"></span><small class="text-xs font-normal text-slate-500"> /mes</small></span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 5 · Éxito -->
+  <section data-paso="5" class="mx-auto max-w-lg" hidden>
+    <div class="card">
+      <header><h2 class="text-2xl text-emerald-600">¡Listo, <span id="exito-nombre"></span>! Tu seguro está activo</h2><p class="text-slate-500">Te enviamos la póliza a <b id="exito-email"></b></p></header>
+      <section class="space-y-4">
+        <div class="rounded-lg bg-indigo-50 p-4"><p class="text-sm text-slate-500">Número de póliza</p><p id="exito-poliza" class="text-2xl font-extrabold text-indigo-800"></p></div>
+        <dl id="exito-detalle" class="grid gap-2"></dl>
+      </section>
+      <footer><button type="button" class="btn" data-variant="ghost" data-accion="reiniciar">Volver al inicio</button></footer>
+    </div>
+  </section>
+
+  <!-- 6 · Error de pago -->
+  <section data-paso="6" class="mx-auto max-w-lg" hidden>
+    <div class="card">
+      <header><h2 class="text-2xl">No pudimos procesar el pago</h2></header>
+      <section><div class="alert" data-variant="destructive"><h2 id="error-motivo"></h2><section>Tus datos siguen guardados. Probá de nuevo o usá otro medio de pago.</section></div></section>
+      <footer class="flex flex-col gap-3 lg:flex-row">
+        <button type="button" class="btn" data-ir="4">Reintentar pago</button>
+        <button type="button" class="btn" data-variant="outline" data-accion="cambiar-medio">Cambiar medio de pago</button>
+      </footer>
+    </div>
+  </section>
+</main>
+</body>
+</html>
