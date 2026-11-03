@@ -1,5 +1,5 @@
 # Cubrí Seguros · Flujo de contratación digital (Seguro de Celular)
-
+LINK DEL NETLIFY:https://coruscating-macaron-b34430.netlify.app/
 TP5 · Diseño UXUI 2026 · Licenciatura en Sistemas de Información (FCyT).
 Stack: HTML5 · Tailwind CSS v4 (CDN) · Basecoat UI · JavaScript vanilla (módulos ES).
 
